@@ -1,6 +1,6 @@
-const { v4 : uuid} = require('uuid');
+const { v4 : uuidv4} = require('uuid');
 
-const connection = require("../database/connection")
+const connection = require("../database/connection");
 
 module.exports = {
     
@@ -8,9 +8,9 @@ module.exports = {
         const servico_id = uuidv4();
         servico.servico_id = servico_id;
 
-        const result = await connection("servico")
-        .insert(servico);
-        return result;
+        await connection("servico").insert(servico);
+
+        return servico_id;
     },
 
     async getById(servico_id){
