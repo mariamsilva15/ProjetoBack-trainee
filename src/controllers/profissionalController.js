@@ -33,12 +33,17 @@ module.exports = {
     async update(request, response){
         try {
             const { profissionais_id } = request.params;
-            const result = await profissionalModels.updateById(profissionais_id);
+            const newProfissional = request.body;
+            const result = await profissionalModels.updateById(profissionais_id, newProfissional);
  
-             return response.status(200).json(result);
+            if(result === 0){
+                return response.status(400).json({notification: "id do profissional não encontrado"});
+            }
+
+             return response.status(200).json({notification: "profissional alterado com sucesso"});
  
          } catch (error) {
-             console.log("profissional update falhou" + error);
+             console.warn("profissional update falhou", error);
  
              return response.status(500).json({notification: "erro interno do servidor ao tentar dar update o profissional",})
          }
@@ -47,12 +52,16 @@ module.exports = {
     async delete(request, response){
         try {
             const { profissionais_id } = request.params;
-            const result = await profissionalModels.deleteById(profissionais_id);
+            const result = await profissionalModels.updateById(profissionais_id);
+
+            if(result === 0){
+                return response.status(400).json({notification: "id do profissional não encontrado"});
+            }
  
-             return response.status(200).json(result);
+             return response.status(200).json({notification: "profissional deletado com sucesso"});
  
          } catch (error) {
-             console.log("profissional delete falhou" + error);
+             console.warn("profissional delete falhou", error);
  
              return response.status(500).json({notification: "erro interno do servidor ao tentar deletar o profissional",})
          }

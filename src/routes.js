@@ -12,10 +12,10 @@ routes.put('/servico/:servicoId', servicoController.update);
 routes.delete('/servico/:servicoId', servicoController.delete);
 
 //profissional
-routes.get('/profissional/:profissionalId', profissionalController.getById);
+routes.get('/profissional/:profissionais_id', profissionalController.getById);
 routes.post('/profissional', profissionalController.create);
-routes.put('/profissional/:profissionalId', profissionalController.update);
-routes.delete('/profissional/:profissionalId', profissionalController.delete);
+routes.put('/profissional/:profissionais_id', profissionalController.update);
+routes.delete('/profissional/:profissionais_id', profissionalController.delete);
 
 // //comentario
 // routes.get('/comentario/:comentarioId', comentarioController.getById);

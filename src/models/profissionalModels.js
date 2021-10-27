@@ -23,7 +23,7 @@ module.exports = {
 
     async updateById(profissionais_id, servico_id){
         const result = await connection("profissional")
-        .where(profissionais_id)
+        .where({ profissionais_id })
         .update(profissional);
         return result;
     },
