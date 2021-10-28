@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
-// const comentarioController = require("./controllers/comentarioController");
+const comentarioController = require("./controllers/comentarioController");
 const profissionalController = require("./controllers/profissionalController");
 const servicoController = require("./controllers/servicoController");
 
@@ -17,11 +17,11 @@ routes.post('/profissional', profissionalController.create);
 routes.put('/profissional/:profissionalId', profissionalController.update);
 routes.delete('/profissional/:profissionalId', profissionalController.delete);
 
-// //comentario
-// routes.get('/comentario/:comentarioId', comentarioController.getById);
-// routes.post('/comentario', comentarioController.create);
-// routes.put('/comentario/:comentarioId', comentarioController.update);
-// routes.delete('/comentario/:comentarioId', comentarioController.delete);
+ //comentario
+routes.get('/comentario/:comentario_id', comentarioController.getByComment);
+routes.post('/comentario', comentarioController.create);
+//routes.put('/comentario/:comentarioId', comentarioController.update);
+//routes.delete('/comentario/:comentarioId', comentarioController.delete);
 
 module.exports = routes;
 
