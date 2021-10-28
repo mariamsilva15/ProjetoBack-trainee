@@ -12,7 +12,7 @@ routes.put('/servico/:servicoId', servicoController.update);
 routes.delete('/servico/:servicoId', servicoController.delete);
 
 //profissional
-routes.get('/profissional/:profissionais_id', profissionalController.getById);
+routes.get('/profissional/:profissionais_id', profissionalController.getByServico);
 routes.post('/profissional', profissionalController.create);
 routes.put('/profissional/:profissionais_id', profissionalController.update);
 routes.delete('/profissional/:profissionais_id', profissionalController.delete);

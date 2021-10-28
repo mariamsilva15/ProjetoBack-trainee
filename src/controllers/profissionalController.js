@@ -17,18 +17,16 @@ module.exports = {
         }
     },
 
-    async getById(profissionais_id){
+    async getByServico(request, response){
         try {
-            const result = await connection("profissional")
-            .where({ profissionais_id })
-            .select("*")
-            .first();
-            
-            return result;
+            const { profissionais_id } = request.params;
+            const result = await profissionalModels.getById(profissionais_id );
+
+            return response.status(200).json(result);
 
          } catch (error) {
-            console.log("profissional getById falhou"+ error);
- 
+            console.log("profissional getById falhou" + error);
+             
             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o profissional",})
          }
     },

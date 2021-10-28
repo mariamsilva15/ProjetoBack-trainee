@@ -16,9 +16,9 @@ module.exports = {
         return profissionais_id;
     },
 
-    async getById(profissionais_id, servico_id){
+    async getById(profissionais_id){
         const result = await connection("profissional")
-        .where({profissionais_id, servico_id})
+        .where({profissionais_id})
         .select("*");
         return result;
     },
