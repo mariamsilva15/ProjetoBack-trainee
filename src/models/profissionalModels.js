@@ -9,7 +9,9 @@ module.exports = {
         profissional.profissionais_id = profissionais_id;
         profissional.profissional_servico_id = profissional_servico_id;
 
+        console.log(profissional_servico_id);
         await connection("profissional").insert(profissional);
+        
 
         return profissionais_id;
     },

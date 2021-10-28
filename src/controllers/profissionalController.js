@@ -1,11 +1,12 @@
-const profissionaloModels = require("../models/profissionalModels");
+const connection = require("../database/connection");
+const profissionalModels = require("../models/profissionalModels");
 
 module.exports = {
     async create(request, response){
         try {
-           const newProfissional = request.body;
-           const {profissional_servico_id} = request.params;
-           const result = await profissionalModels.create(newProfissional, profissional_servico_id);
+            const newProfissional = request.body;
+            const {profissional_servico_id} = request.body;
+            const result = await profissionalModels.create(newProfissional, profissional_servico_id);
 
             return response.status(200).json(result);
 
@@ -16,17 +17,19 @@ module.exports = {
         }
     },
 
-    async getById(request, response){
+    async getById(profissionais_id){
         try {
-            const { profissionais_id } = request.params;
-            const result = await profissionalModels.getById(profissionais_id);
- 
-             return response.status(200).json(result);
- 
+            const result = await connection("profissional")
+            .where({ profissionais_id })
+            .select("*")
+            .first();
+            
+            return result;
+
          } catch (error) {
-             console.log("profissional getById falhou" + error);
+            console.log("profissional getById falhou" + error);
  
-             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o profissional",})
+            return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o profissional",})
          }
     },
 
