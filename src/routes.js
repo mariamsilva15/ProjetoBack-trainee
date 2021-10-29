@@ -18,10 +18,10 @@ routes.put('/profissional/:profissionalId', profissionalController.update);
 routes.delete('/profissional/:profissionalId', profissionalController.delete);
 
  //comentario
-routes.get('/comentario/:comentario_id', comentarioController.getByComment);
+routes.get('/comentario/:comentario_id', comentarioController.getById);
 routes.post('/comentario', comentarioController.create);
-//routes.put('/comentario/:comentarioId', comentarioController.update);
-//routes.delete('/comentario/:comentarioId', comentarioController.delete);
+routes.put('/comentario/:comentario_id', comentarioController.update);
+routes.delete('/comentario/:comentario_id', comentarioController.delete);
 
 module.exports = routes;
 
