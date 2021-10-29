@@ -41,7 +41,7 @@ module.exports = {
     }),
     delete: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
-            profissionais_id: Joi.string().required(),
+            profissionais_id: Joi.string().required()
         }),
     }),
 
