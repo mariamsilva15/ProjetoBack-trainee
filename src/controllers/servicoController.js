@@ -49,7 +49,7 @@ module.exports = {
             const { servico_id } = request.params;
             const result = await servicoModels.deleteById(servico_id);
  
-             return response.status(200).json({notification:"serviço deletado com sucesso"});
+             return response.status(200).json({notification: "serviço deletado com sucesso"});
  
          } catch (error) {
              console.log("servico delete falhou" + error);
