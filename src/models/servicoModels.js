@@ -17,7 +17,6 @@ module.exports = {
         const result = await connection("servico")
         .where({servico_id})
         .select("*")
-        .first();
         return result;
     },
 

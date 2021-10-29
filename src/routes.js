@@ -9,10 +9,10 @@ const servicoController = require("./controllers/servicoController");
 const profissionalValidator = require("./validators/profissionalValidator");
 
 //servico
-routes.get('/servico/:servicoId', servicoController.getById);
+routes.get('/servico/:servico_id', servicoController.getById);
 routes.post('/servico', servicoController.create);
-routes.put('/servico/:servicoId', servicoController.update);
-routes.delete('/servico/:servicoId', servicoController.delete);
+routes.put('/servico/:servico_id', servicoController.update);
+routes.delete('/servico/:servico_id', servicoController.delete);
 
 //profissional
 routes.get('/profissional/:profissionais_id',profissionalValidator.getById, profissionalController.getById);
