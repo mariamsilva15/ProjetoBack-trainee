@@ -26,6 +26,13 @@ module.exports = {
         return result;
     },
 
+    async updateById(comentario_id, comentario){
+        const result = await connection("comentario")
+        .where({comentario_id})
+        .update(comentario);
+        return result;
+    },
+
     async deleteById(comentario_id){
         const result = await connection("comentario")
         .where({ comentario_id })

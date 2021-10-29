@@ -21,11 +21,11 @@ routes.post('/profissional',profissionalValidator.create, profissionalController
 routes.put('/profissional/:profissionais_id',profissionalValidator.update, profissionalController.update);
 routes.delete('/profissional/:profissionais_id',profissionalValidator.delete, profissionalController.delete);
 
-// //comentario
-// routes.get('/comentario/:comentarioId', comentarioController.getById);
-// routes.post('/comentario', comentarioController.create);
-// routes.put('/comentario/:comentarioId', comentarioController.update);
-// routes.delete('/comentario/:comentarioId', comentarioController.delete);
+ //comentario
+routes.get('/comentario/:comentario_id', comentarioController.getById);
+routes.post('/comentario', comentarioController.create);
+routes.put('/comentario/:comentario_id', comentarioController.update);
+routes.delete('/comentario/:comentario_id', comentarioController.delete);
 
 module.exports = routes;
 
