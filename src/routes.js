@@ -7,12 +7,13 @@ const routes = express.Router();
 const profissionalController = require("./controllers/profissionalController");
 const servicoController = require("./controllers/servicoController");
 const profissionalValidator = require("./validators/profissionalValidator");
+const servicoValidator = require('./validators/servicoValidator');
 
 //servico
-routes.get('/servico/:servicoId', servicoController.getById);
-routes.post('/servico', servicoController.create);
-routes.put('/servico/:servicoId', servicoController.update);
-routes.delete('/servico/:servicoId', servicoController.delete);
+routes.get('/servico/:servicoId',servicoValidator.getById,servicoController.getById);
+routes.post('/servico',servicoValidator.create, servicoController.create);
+routes.put('/servico/:servicoId',servicoValidator.update, servicoController.update);
+routes.delete('/servico/:servicoId',servicoValidator.delete, servicoController.delete);
 
 //profissional
 routes.get('/profissional/:profissionais_id',profissionalValidator.getById, profissionalController.getById);
