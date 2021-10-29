@@ -16,8 +16,7 @@ module.exports = {
     async getById(servico_id){
         const result = await connection("servico")
         .where({servico_id})
-        .select("*")
-        .first();
+        .select("*");
         return result;
     },
 

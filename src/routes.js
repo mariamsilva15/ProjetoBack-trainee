@@ -6,10 +6,10 @@ const profissionalController = require("./controllers/profissionalController");
 const servicoController = require("./controllers/servicoController");
 
 //servico
-routes.get('/servico/:servicoId', servicoController.getById);
+routes.get('/servico/:servico_id', servicoController.getById);
 routes.post('/servico', servicoController.create);
-routes.put('/servico/:servicoId', servicoController.update);
-routes.delete('/servico/:servicoId', servicoController.delete);
+routes.put('/servico/:servico_id', servicoController.update);
+routes.delete('/servico/:servico_id', servicoController.delete);
 
 //profissional
 routes.get('/profissional/:profissionalId', profissionalController.getById);

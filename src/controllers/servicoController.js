@@ -31,10 +31,11 @@ module.exports = {
 
     async update(request, response){
         try {
+            const newServico= request.body;
             const { servico_id } = request.params;
-            const result = await servicoModels.updateById(servico_id);
+             await servicoModels.updateById(servico_id, newServico);
  
-             return response.status(200).json(result);
+             return response.status(200).json({notification:"serviço alterado com sucesso"});
  
          } catch (error) {
              console.log("servico update falhou" + error);
