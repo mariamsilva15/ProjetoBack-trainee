@@ -7,7 +7,7 @@ module.exports = {
         [Segments.BODY] : Joi.object().keys({
 
             nome : Joi.string().required(),
-            especificaçoes : Joi.string().required(),
+            especificacoes : Joi.string().required(),
         }),
         
     }),
