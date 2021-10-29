@@ -31,9 +31,9 @@ module.exports = {
 
     async update(request, response){
         try {
-            const newServico= request.body;
+            const newServico = request.body;
             const { servico_id } = request.params;
-             await servicoModels.updateById(servico_id, newServico);
+            const result = await servicoModels.updateById(servico_id,newServico);
  
              return response.status(200).json({notification:"serviço alterado com sucesso"});
  
@@ -49,7 +49,7 @@ module.exports = {
             const { servico_id } = request.params;
             const result = await servicoModels.deleteById(servico_id);
  
-             return response.status(200).json(result);
+             return response.status(200).json({notification: "serviço deletado com sucesso"});
  
          } catch (error) {
              console.log("servico delete falhou" + error);
