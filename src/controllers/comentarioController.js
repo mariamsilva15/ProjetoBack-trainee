@@ -1,6 +1,5 @@
 const connection = require("../database/connection");
 const comentarioModels = require("../models/comentarioModels");
-const { update } = require("./profissionalController");
 
 module.exports = {
     async create(request, response){

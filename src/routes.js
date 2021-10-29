@@ -3,7 +3,7 @@ const routes = express.Router();
 
 
 
-// const comentarioController = require("./controllers/comentarioController");
+const comentarioController = require("./controllers/comentarioController");
 const profissionalController = require("./controllers/profissionalController");
 const servicoController = require("./controllers/servicoController");
 const profissionalValidator = require("./validators/profissionalValidator");

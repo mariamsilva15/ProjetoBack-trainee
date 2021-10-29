@@ -4,25 +4,20 @@ const connection = require("../database/connection")
 
 module.exports = {
 
-    async create(comentario) {
+    async create(comentario, comentario_servico_id) {
         const comentario_id = uuidv4();
         comentario.comentario_id = comentario_id;
+        comentario.comentario_servico_id = comentario_servico_id;
         
-        const result = await connection("comentario").insert(comentario);
-        return result;
+        await connection("comentario").insert(comentario);
+        return comentario_id;
     },
 
-    async getById({comentario_id, servico_id}){
-        const result = await connection("comentario")
-        .where({comentario_id, servico_id})
-        .select("*");
-        return result;
-    },
-
-    async updateById(comentario_id, servico_id){
+    async getById(comentario_id){
         const result = await connection("comentario")
         .where({comentario_id})
-        .update(comentario);
+        .select("*");
+    
         return result;
     },
 
