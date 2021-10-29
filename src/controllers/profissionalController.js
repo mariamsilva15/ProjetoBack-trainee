@@ -17,7 +17,7 @@ module.exports = {
         }
     },
 
-    async getByServico(request, response){
+    async getById(request, response){
         try {
             const { profissionais_id } = request.params;
             const result = await profissionalModels.getById(profissionais_id );
