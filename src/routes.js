@@ -8,6 +8,7 @@ const profissionalController = require("./controllers/profissionalController");
 const servicoController = require("./controllers/servicoController");
 const profissionalValidator = require("./validators/profissionalValidator");
 const servicoValidator = require('./validators/servicoValidator');
+const comentarioValidator = require('./validators/comentarioValidator');
 
 //servico
 routes.get('/servico/:servico_id',servicoValidator.getById,servicoController.getById);
@@ -22,8 +23,8 @@ routes.put('/profissional/:profissionais_id',profissionalValidator.update, profi
 routes.delete('/profissional/:profissionais_id',profissionalValidator.delete, profissionalController.delete);
 
  //comentario
-routes.get('/comentario/:comentario_id', comentarioController.getById);
-routes.post('/comentario', comentarioController.create);
+routes.get('/comentario/:comentario_id', comentarioValidator.getById, comentarioController.getById);
+routes.post('/comentario', comentarioValidator.create, comentarioController.create);
 routes.put('/comentario/:comentario_id', comentarioController.update);
 routes.delete('/comentario/:comentario_id', comentarioController.delete);
 
