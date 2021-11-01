@@ -10,6 +10,7 @@ exports.up = function(knex) {
     table.string('cidade').notNullable();
     table.string('descricao').notNullable();
     table.string('senha').notNullable();
+    table.string('confirmarSenha').notNullable();
     table.string('contato').notNullable();
 
   });

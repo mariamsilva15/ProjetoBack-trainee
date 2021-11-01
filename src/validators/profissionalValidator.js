@@ -12,6 +12,7 @@ module.exports = {
             cidade : Joi.string().required(),
             descricao : Joi.string().required(),
             senha : Joi.string().required(),
+            confirmarSenha : Joi.ref('senha'),
             contato : Joi.string().required(),
 
         })
