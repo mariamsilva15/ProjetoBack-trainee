@@ -25,8 +25,8 @@ routes.delete('/profissional/:profissionais_id',profissionalValidator.delete, pr
  //comentario
 routes.get('/comentario/:comentario_id', comentarioValidator.getById, comentarioController.getById);
 routes.post('/comentario', comentarioValidator.create, comentarioController.create);
-routes.put('/comentario/:comentario_id', comentarioController.update);
-routes.delete('/comentario/:comentario_id', comentarioController.delete);
+routes.put('/comentario/:comentario_id', comentarioValidator.update, comentarioController.update);
+routes.delete('/comentario/:comentario_id', comentarioValidator.delete, comentarioController.delete);
 
 module.exports = routes;
 
