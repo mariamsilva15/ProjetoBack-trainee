@@ -16,10 +16,23 @@ module.exports = {
         return profissionais_id;
     },
 
-    async getById(profissionais_id){
+    /*async getById(profissionais_id){
         const result = await connection("profissional")
         .where({profissionais_id})
         .select("*");
+        return result;
+    },*/
+    async getByServicoWithFilters(profissional_servico_id, {servicoSelecionado}){
+        const filter = {"profissional.profissional_servico_id":profissional_servico_id};
+        // como faço para diferenciar um nome do outro?
+        
+        if(servicoSelecionado) filter["servico.nome"] = servicoSelecionado;
+
+        const result = await connection("profissional")
+        .innerJoin("servico", "profissional.profissional_servico_id","servico.servico_id")
+        .where(filter)
+        .select("profissional.*");
+    
         return result;
     },
 

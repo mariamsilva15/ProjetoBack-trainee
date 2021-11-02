@@ -16,8 +16,24 @@ module.exports = {
             return response.status(500).json({notification: "erro interno do servidor ao tentar criar o comentario"});
         }
     },
+    async getByServico(request, response){
+        try {
+            const { comentario_servico_id } = request.params;
+            const result = await comentarioModels.getByServicoWithFilters(comentario_servico_id, request.query);
+ 
+             return response.status(200).json(result);
+ 
+         } catch (error) {
+             console.warn("getByServico falhou", error);
+ 
+             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o comentario"});
+         }
+    },
 
-    async getById(request, response){
+
+
+
+   /*async getById(request, response){
         try {
             const {comentario_id} = request.params;
             const result = await comentarioModels.getById(comentario_id);
@@ -29,7 +45,7 @@ module.exports = {
  
              return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o comentario"});
          }
-    },
+    }, */
 
     async update(request, response) {
         try {
