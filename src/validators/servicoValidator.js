@@ -9,8 +9,12 @@ module.exports = {
             nome : Joi.string().required(),
             especificacoes : Joi.string().required(),
         }),
+        [Segments.HEADERS] : Joi.object().keys({
+            authorization: Joi.string().required(),
+        }).unknown(),
         
     }),
+    
     getById: celebrate({
         [Segments.PARAMS] : Joi.object().keys({
             servico_id : Joi.string().required(),

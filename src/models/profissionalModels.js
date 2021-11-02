@@ -4,16 +4,24 @@ const connection = require("../database/connection")
 
 module.exports = {
 
-    async create(profissional, profissional_servico_id) {
+    async create(profissional) {
         const profissionais_id = uuidv4();
         profissional.profissionais_id = profissionais_id;
-        profissional.profissional_servico_id = profissional_servico_id;
+        profissional.profissional_servico_id = profissional.profissional_servico_id;
 
-        console.log(profissional_servico_id);
+        console.log(profissional.profissional_servico_id);
         await connection("profissional").insert(profissional);
         
 
         return profissionais_id;
+    },
+
+    async getByFields(fields) {
+        const result = await connection("profissional")
+        .where(fields)
+        .select("*")
+        .first();
+        return result;
     },
 
     /*async getById(profissionais_id){
