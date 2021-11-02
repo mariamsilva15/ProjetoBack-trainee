@@ -17,7 +17,7 @@ module.exports = {
         }
     },
 
-    async getById(request, response){
+    /* async getById(request, response){
         try {
             const { profissionais_id } = request.params;
             const result = await profissionalModels.getById(profissionais_id );
@@ -28,6 +28,20 @@ module.exports = {
             console.log("profissional getById falhou" + error);
              
             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o profissional",})
+         }
+    }, */
+
+    async getByServico(request, response){
+        try {
+            const { profissional_servico_id } = request.params;
+            const result = await profissionalModels.getByServicoWithFilters(profissional_servico_id, request.query);
+ 
+             return response.status(200).json(result);
+ 
+         } catch (error) {
+             console.warn("getByServico falhou", error);
+ 
+             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o profissional"});
          }
     },
 

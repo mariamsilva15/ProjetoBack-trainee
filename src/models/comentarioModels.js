@@ -1,4 +1,5 @@
 const { v4 : uuidv4} = require('uuid');
+const { getByComentario } = require('../controllers/comentarioController');
 
 const connection = require("../database/connection")
 
@@ -13,10 +14,22 @@ module.exports = {
         return comentario_id;
     },
 
-    async getById(comentario_id){
+    /*async getById(comentario_id){
         const result = await connection("comentario")
         .where({comentario_id})
         .select("*");
+    
+        return result;
+    },*/
+    async getByServicoWithFilters(comentario_servico_id, {servicoSelecionado}){
+        const filter = {"comentario.comentario_servico_id":comentario_servico_id};
+        
+        if(servicoSelecionado) filter["servico.nome"] = servicoSelecionado;
+
+        const result = await connection("comentario")
+        .innerJoin("servico", "comentario.comentario_servico_id","servico.servico_id")
+        .where(filter)
+        .select("comentario.*");
     
         return result;
     },
