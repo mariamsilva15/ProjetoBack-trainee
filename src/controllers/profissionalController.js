@@ -1,19 +1,29 @@
 const connection = require("../database/connection");
 const profissionalModels = require("../models/profissionalModels");
+const Firebase = require("../utils/Firebase");
+
 
 module.exports = {
     async create(request, response){
         try {
             const newProfissional = request.body;
             const {profissional_servico_id} = request.body;
+            console.log(newProfissional.senha);
+            const uid = await Firebase.createNewUser(newProfissional.email, newProfissional.senha);
+        
+            delete newProfissional.senha;
+            delete newProfissional.confirmarSenha;
+            newProfissional.firebase_id = uid;
+            
             const result = await profissionalModels.create(newProfissional, profissional_servico_id);
-
+            
             return response.status(200).json(result);
+            
 
         } catch (error) {
             console.warn("criacao do profissional falhou", error);
 
-            return response.status(500).json({notification: "erro interno do servidor ao tentar criar o profissional",})
+            return response.status(500).json({notification: "erro interno do servidor ao tentar criar o profissional"});
         }
     },
 

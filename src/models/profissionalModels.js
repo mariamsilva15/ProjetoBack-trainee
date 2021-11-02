@@ -16,6 +16,14 @@ module.exports = {
         return profissionais_id;
     },
 
+    async getByFields(fields) {
+        const result = await connection("profissional")
+        .where(fields)
+        .select("*")
+        .first();
+        return result;
+    },
+
     async getById(profissionais_id){
         const result = await connection("profissional")
         .where({profissionais_id})

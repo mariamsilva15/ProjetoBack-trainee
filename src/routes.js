@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
-
+const auth = require("./middlewares/authentication");
 
 const comentarioController = require("./controllers/comentarioController");
 const profissionalController = require("./controllers/profissionalController");
@@ -10,11 +10,17 @@ const profissionalValidator = require("./validators/profissionalValidator");
 const servicoValidator = require('./validators/servicoValidator');
 const comentarioValidator = require('./validators/comentarioValidator');
 
+const sessionController = require('./controllers/sessionController');
+
+//session
+routes.post("/login", sessionController.signIn);
+
+
 //servico
-routes.get('/servico/:servico_id',servicoValidator.getById,servicoController.getById);
-routes.post('/servico',servicoValidator.create, servicoController.create);
-routes.put('/servico/:servico_id',servicoValidator.update, servicoController.update);
-routes.delete('/servico/:servico_id',servicoValidator.delete, servicoController.delete);
+routes.get('/servico/:servico_id',servicoValidator.getById, auth.authenticateToken, servicoController.getById);
+routes.post('/servico',servicoValidator.create, auth.authenticateToken, servicoController.create);
+routes.put('/servico/:servico_id',servicoValidator.update, auth.authenticateToken, servicoController.update);
+routes.delete('/servico/:servico_id',servicoValidator.delete, auth.authenticateToken, servicoController.delete);
 
 //profissional
 routes.get('/profissional/:profissionais_id',profissionalValidator.getById, profissionalController.getById);
