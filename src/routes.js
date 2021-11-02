@@ -17,6 +17,7 @@ routes.post("/login", sessionController.signIn);
 
 
 //servico
+routes.get('/servico/tipos', servicoController.get);
 routes.get('/servico/:servico_id',servicoValidator.getById, auth.authenticateToken, servicoController.getById);
 routes.post('/servico',servicoValidator.create, auth.authenticateToken, servicoController.create);
 routes.put('/servico/:servico_id',servicoValidator.update, auth.authenticateToken, servicoController.update);

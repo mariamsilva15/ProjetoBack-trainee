@@ -14,7 +14,19 @@ module.exports = {
             return response.status(500).json({notification: "erro interno do servidor ao tentar criar o servico",})
         }
     },
+    async get(request, response){
+        try {
+            
+            const result = await servicoModels.get();
 
+             return response.status(200).json(result);
+ 
+         } catch (error) {
+             console.log("servico get falhou" + error);
+ 
+             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o servico"});
+         }
+    },
     async getById(request, response){
         try {
             const { servico_id } = request.params;
@@ -25,7 +37,7 @@ module.exports = {
          } catch (error) {
              console.log("servico getById falhou" + error);
  
-             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o servico",})
+             return response.status(500).json({notification: "erro interno do servidor ao tentar visualizar o servico"});
          }
     },
 

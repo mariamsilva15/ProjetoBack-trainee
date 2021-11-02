@@ -6,16 +6,17 @@ const Firebase = require("../utils/Firebase");
 module.exports = {
     async create(request, response){
         try {
+            console.log(request.body);
             const newProfissional = request.body;
-            const {profissional_servico_id} = request.body;
-            console.log(newProfissional.senha);
+            
+            
             const uid = await Firebase.createNewUser(newProfissional.email, newProfissional.senha);
         
             delete newProfissional.senha;
             delete newProfissional.confirmarSenha;
             newProfissional.firebase_id = uid;
             
-            const result = await profissionalModels.create(newProfissional, profissional_servico_id);
+            const result = await profissionalModels.create(newProfissional);
             
             return response.status(200).json(result);
             

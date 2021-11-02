@@ -12,7 +12,12 @@ module.exports = {
 
         return servico_id;
     },
-
+    
+    async get(){
+        const result = await connection("servico")
+        .select("*")
+        return result;
+    },
     async getById(servico_id){
         const result = await connection("servico")
         .where({servico_id})

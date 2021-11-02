@@ -14,6 +14,7 @@ module.exports = {
         }).unknown(),
         
     }),
+    
     getById: celebrate({
         [Segments.PARAMS] : Joi.object().keys({
             servico_id : Joi.string().required(),
