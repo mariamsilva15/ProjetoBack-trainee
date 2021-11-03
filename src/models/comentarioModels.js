@@ -1,5 +1,4 @@
 const { v4 : uuidv4} = require('uuid');
-const { getByComentario } = require('../controllers/comentarioController');
 
 const connection = require("../database/connection")
 

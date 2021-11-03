@@ -16,7 +16,6 @@ module.exports = {
         
             const profissional = await profissionalModels.getByFields({firebase_id: firebaseId});
 
-            
             const accessToken = jwt.sign({profissional}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30d",});
 
             return response.status(200).json({profissional, accessToken});

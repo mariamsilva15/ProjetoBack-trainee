@@ -1,12 +1,11 @@
-
-const Firebase = require("../utils/Firebase");
+const { v4 : uuidv4 } = require('uuid');
 
 const connection = require("../database/connection")
 
 module.exports = {
 
     async create(profissional) {
-        const profissionais_id = profissional.firebase_id;
+        const profissionais_id = uuidv4();
         profissional.profissionais_id = profissionais_id;
         profissional.profissional_servico_id = profissional.profissional_servico_id;
 
