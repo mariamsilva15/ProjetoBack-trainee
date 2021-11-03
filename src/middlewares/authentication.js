@@ -22,4 +22,5 @@ module.exports = {
         if(validToken) return next();
         return response.status(403).json({ error: 'Invalid authorization token' });
     },
+    
 };
