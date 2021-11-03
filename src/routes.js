@@ -18,14 +18,14 @@ routes.post("/login", sessionController.signIn);
 
 //servico
 routes.get('/servico/tipos', servicoController.get);
-routes.get('/servicoget/:servico_id',servicoValidator.getById, auth.authenticateToken, servicoController.getById);
+routes.get('/servicoget/:servico_id',servicoValidator.getById, servicoController.getById);
 routes.post('/servicopost',servicoValidator.create, auth.authenticateToken, servicoController.create);
 routes.put('/servicoput/:servico_id',servicoValidator.update, auth.authenticateToken, servicoController.update);
 routes.delete('/servicodelete/:servico_id',servicoValidator.delete, auth.authenticateToken, servicoController.delete);
 
 //profissional
 routes.get('/profissional/todos', profissionalController.get);
-//routes.get('/profissional/:profissionais_id',profissionalValidator.getById, profissionalController.getById);
+routes.get('/profissional/:profissionais_id', profissionalController.getById);
 routes.get('/profissional/:profissional_servico_id',profissionalValidator.getById, profissionalController.getByServico);
 routes.post('/profissional',profissionalValidator.create, profissionalController.create);
 routes.put('/profissional/:profissionais_id',profissionalValidator.update, profissionalController.update);
