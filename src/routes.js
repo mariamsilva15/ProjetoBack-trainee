@@ -28,7 +28,7 @@ routes.get('/profissional/todos', profissionalController.get);
 //routes.get('/profissional/:profissionais_id',profissionalValidator.getById, profissionalController.getById);
 routes.get('/profissional/:profissional_servico_id',profissionalValidator.getById, profissionalController.getByServico);
 routes.post('/profissional',profissionalValidator.create, profissionalController.create);
-routes.put('/profissional/:profissionais_id',profissionalValidator.update, profissionalController.update);
+routes.put('/profissionalUpdate/:profissionais_id',profissionalValidator.update, profissionalController.update);
 routes.delete('/profissional/:profissionais_id',profissionalValidator.delete, profissionalController.delete);
 
  //comentario
