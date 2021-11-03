@@ -25,7 +25,7 @@ routes.delete('/servicodelete/:servico_id',servicoValidator.delete, auth.authent
 
 //profissional
 routes.get('/profissional/todos', profissionalController.get);
-routes.get('/profissional/:profissionais_id', profissionalController.getById);
+routes.get('/profissionalget/:profissionais_id', profissionalController.getById);
 routes.get('/profissional/:profissional_servico_id',profissionalValidator.getById, profissionalController.getByServico);
 routes.post('/profissional',profissionalValidator.create, profissionalController.create);
 routes.put('/profissional/:profissionais_id',profissionalValidator.update, profissionalController.update);
