@@ -29,7 +29,7 @@ module.exports = {
 
         [Segments.BODY] : Joi.object().keys({
             nome : Joi.string().optional(),
-            especificaçoes : Joi.string().optional(), 
+            especificacoes : Joi.string().optional(), 
         }),
     
     }),
